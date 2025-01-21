@@ -4,11 +4,13 @@ using Microsoft.AspNetCore;
 using ApiNet6.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ApiNet6.Controllers
 {
     [EnableCors("CorsRules")]
     [Route("api/[controller]")]
+    //[Authorize] //JWT
     [ApiController]
     public class ProductController : ControllerBase
     {
