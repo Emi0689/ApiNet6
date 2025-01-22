@@ -37,8 +37,7 @@ namespace ApiNet6.Controllers
             }
             catch (Exception ex)
             {
-                string conString = configuration.GetConnectionString("SQLAZURECONNSTR_StringDBAPI");
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message + "con: "+ conString, Response = products });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, Response = products });
             }
         }
 
