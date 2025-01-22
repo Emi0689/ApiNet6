@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DbapiContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SQLAZURECONNSTR_StringDBAPI")));
+builder.Services.AddDbContext<DbapiContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("StringDBAPI")));
 
 builder.Services.AddControllers().AddJsonOptions(opt =>
     { opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; }
