@@ -11,17 +11,15 @@ namespace ApiNet6.Controllers
 {
     [EnableCors("CorsRules")]
     [Route("api/[controller]")]
-    //[Authorize] //JWT
+    [Authorize] //JWT
     [ApiController]
     public class ProductController : ControllerBase
     {
         public readonly DbapiContext _dbapiContext;
-        private readonly IConfiguration configuration;
 
-        public ProductController(DbapiContext dbapiContext, IConfiguration config)
+        public ProductController(DbapiContext dbapiContext)
         {
             _dbapiContext = dbapiContext;
-            configuration = config;
         }
 
         [HttpGet]
