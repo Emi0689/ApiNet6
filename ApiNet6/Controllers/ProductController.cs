@@ -5,6 +5,7 @@ using ApiNet6.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiNet6.Controllers
 {
@@ -15,10 +16,12 @@ namespace ApiNet6.Controllers
     public class ProductController : ControllerBase
     {
         public readonly DbapiContext _dbapiContext;
+        private readonly IConfiguration configuration;
 
-        public ProductController(DbapiContext dbapiContext)
+        public ProductController(DbapiContext dbapiContext, IConfiguration config)
         {
             _dbapiContext = dbapiContext;
+            configuration = config;
         }
 
         [HttpGet]
@@ -34,7 +37,8 @@ namespace ApiNet6.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, Response = products });
+                string conString = configuration.GetConnectionString("StringDBAPI");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message + "con: "+ conString, Response = products, });
             }
         }
 
