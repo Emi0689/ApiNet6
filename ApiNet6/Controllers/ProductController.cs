@@ -35,7 +35,7 @@ namespace ApiNet6.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message, Response = products });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "TIMEOUT: Sorry the DataBase is FREE, so it is a little slow, please try again", Response = products });
             }
         }
 
