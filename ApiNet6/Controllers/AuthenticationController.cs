@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using ApiNet6.Models;
-using System.Text.Encodings;
 using System.Text;
 
 namespace ApiNet6.Controllers
@@ -24,7 +22,7 @@ namespace ApiNet6.Controllers
         [Route("Validate")]
         public IActionResult Validate([FromBody] User user)
         {
-            if (user.Email == "1" && user.Password == "1")
+            if (!string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(user.Password))
             {
                 var keyBytes = Encoding.ASCII.GetBytes(secretKey);
                 var claims = new ClaimsIdentity();
@@ -47,7 +45,7 @@ namespace ApiNet6.Controllers
             }
             else
             {
-                return StatusCode(StatusCodes.Status401Unauthorized, new { Message = "Invalid Credentials" });
+                return StatusCode(StatusCodes.Status401Unauthorized, new { Message = "Please, set the user.Email and user.Password with any information to return the token" });
             }
         }
     }
