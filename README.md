@@ -1,1 +1,1 @@
-This is a CRUD API created in NET 6, with Entity framework Core, SQL Server and run in Azure
+This Product API is a RESTful CRUD API built with .NET 6 and Entity Framework Core, featuring full Swagger documentation. It provides endpoints to create, read, update, and delete product data. The API is hosted on Azure, making it accessible for testing and integration in real-world scenarios.
